@@ -1,0 +1,19 @@
+
+ import "./recommendation.zmodel"  
+ import "./virtualTryOn.zmodel"  
+
+model Outfit {
+
+    id                String        @id @default(uuid())  
+    description  String?          
+    imageUrl    String?          
+    style          String?          
+    color          String?          
+    occasion    String?          
+
+recommendations  Recommendation[]  @relation("outfit")  
+    virtualTryOns  VirtualTryOn[]  @relation("outfit")  
+      dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

@@ -1,0 +1,17 @@
+
+ import "./user.zmodel"  
+ import "./outfit.zmodel"  
+
+model VirtualTryOn {
+
+    id                String        @id @default(uuid())  
+    tryOnImageUrl  String?          
+    userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+    outfitId    String?          
+    outfit        Outfit?        @relation(fields: [outfitId], references: [id], name:"outfit")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

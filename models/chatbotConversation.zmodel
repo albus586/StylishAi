@@ -1,0 +1,14 @@
+
+ import "./user.zmodel"  
+
+model ChatbotConversation {
+
+    id                String        @id @default(uuid())  
+    conversationData  String?          
+    userId        String?          
+    user            User?            @relation(fields: [userId], references: [id], name:"user")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
